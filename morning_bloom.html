@@ -53,7 +53,7 @@
     background: #fff0f8;
     border: 1px solid #f2d6e8;
     border-radius: 40px;
-    padding: 7px 10px;
+    padding: 7px 20px;
   }
 
   .date-btn {
@@ -104,31 +104,31 @@
     font-weight: 400;
   }
 
-  /* Your new rotated label text color assignments */
+  /* Your rotated label text color assignments */
   .q1 .q-label { color: #7040c0; } /* Pink box label -> Purple text */
   .q2 .q-label { color: #c060a0; } /* Yellow box label -> Pink text */
   .q3 .q-label { color: #a07820; } /* Blue box label -> Yellow/Brown text */
   .q4 .q-label { color: #4070c0; } /* Purple box label -> Blue text */
 
-  /* Compact input fields that auto-expand dynamically */
+  /* Strictly forced single-line sleek input areas */
   textarea {
     width: 100%;
     border: none;
     background: rgba(255,255,255,0.65);
     border-radius: 6px;
-    padding: 6px 10px;
+    padding: 4px 10px; /* Slimmer padding to stop layout swelling */
     font-size: 16px; 
     resize: none;
     outline: none;
-    line-height: 1.5;
-    min-height: 36px; 
-    height: 36px;
+    line-height: 1.4;
+    height: 28px; /* Fixed small initial single line height */
+    min-height: 28px;
     overflow-y: hidden;
     opacity: 1;
     transition: opacity 0.2s ease, background-color 0.2s ease;
   }
 
-  /* Matching your typing color configurations exactly to the labels */
+  /* Text typing color configs */
   #q1 { color: #7040c0; }
   #q2 { color: #c060a0; }
   #q3 { color: #a07820; }
@@ -264,9 +264,12 @@
 
   function getKey(d) { return 'morning_' + d.toISOString().split('T')[0]; }
 
+  // Precision calculation script logic prevents empty inputs from swelling up
   function autoGrow(element) {
-    element.style.height = "36px";
-    element.style.height = (element.scrollHeight) + "px";
+    element.style.height = "28px";
+    if (element.value.trim() !== "") {
+      element.style.height = (element.scrollHeight) + "px";
+    }
   }
 
   function changeDate(dir) {
