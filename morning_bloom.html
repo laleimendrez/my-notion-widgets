@@ -10,70 +10,42 @@
 
   html, body {
     overflow-x: hidden;
-    background: transparent;
+    background: transparent; /* No background color */
     font-family: 'Lora', serif;
   }
 
-  /* Core container styling mirroring the Notion look */
+  /* Maxed out container to utilize 100% width with subtle widget animation */
   .card {
-    background: #ffffff;
-    padding: 24px;
+    background: transparent;
+    padding: 16px 4px;
     width: 100%;
-    max-width: 650px;
     margin: 0 auto;
-    animation: float 4s ease-in-out infinite; /* Soft widget floating effect */
+    animation: float 4s ease-in-out infinite; 
   }
 
-  /* Twinkling sparkle animations */
-  .sparkles {
-    text-align: center;
-    font-size: 14px;
-    margin-bottom: 4px;
-    color: #e0a8c8;
+  /* Header Layout: Text on Left, Date on Right */
+  .header-container {
     display: flex;
-    justify-content: center;
-    gap: 8px;
-  }
-  
-  .sparkles span {
-    display: inline-block;
-    animation: twinkle 2.5s ease-in-out infinite;
-  }
-  .sparkles span:nth-child(2) { animation-delay: 0.5s; }
-  .sparkles span:nth-child(3) { animation-delay: 1s; }
-
-  .title {
-    font-size: 24px;
-    color: #c060a1;
-    text-align: center;
-    font-weight: 500;
-    margin-bottom: 2px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 24px;
+    padding: 0 4px;
   }
 
   .subtitle {
-    font-size: 11px;
-    color: #d4a0c0;
-    text-align: center;
-    letter-spacing: 0.08em;
-    text-transform: lowercase;
-    margin-bottom: 18px;
+    font-size: 16px; /* Bigger font size */
+    color: #c060a1;
     font-style: italic;
+    text-transform: lowercase;
   }
 
-  /* Date navigation pills similar to your Notion setup */
+  /* Minimalist Date Picker on the right */
   .date-nav {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
-    background: #f8f0ff;
-    border-radius: 20px;
-    padding: 6px 16px;
-    margin-bottom: 22px;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 2px 8px rgba(192, 96, 161, 0.05);
+    gap: 12px;
+    background: transparent;
   }
 
   .date-btn {
@@ -81,49 +53,53 @@
     border: none;
     color: #c060a1;
     cursor: pointer;
-    font-size: 14px;
-    transition: transform 0.2s, color 0.2s;
+    font-size: 18px; /* Bigger font size */
+    transition: transform 0.2s;
   }
 
   .date-btn:hover { 
     transform: scale(1.2); 
-    color: #9b6bbd;
   }
 
   .date-display {
-    font-size: 13px;
-    color: #c060a1;
-    text-align: center;
+    font-size: 16px; /* Bigger font size */
+    color: #9b6bbd;
+    font-style: italic;
     font-weight: 500;
   }
 
-  /* Check-in Blocks matching your Notion's exact color profile */
-  .questions { display: flex; flex-direction: column; gap: 12px; }
+  /* Full-width Questions Layout (Sagad / No background color) */
+  .questions { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 16px; 
+    width: 100%;
+  }
 
   .q-block { 
-    border-radius: 12px; 
-    padding: 14px 18px; 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    border-radius: 14px; 
+    padding: 16px 20px; 
+    background: transparent; /* No background */
+    transition: transform 0.2s ease;
   }
   
   .q-block:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
   }
 
-  /* Colors mapped exactly from your image blocks */
-  .q1 { background-color: #fff0f5; } /* Pastel Pink */
-  .q2 { background-color: #fffbf0; } /* Soft Yellow */
-  .q3 { background-color: #f0f7ff; } /* Light Blue */
-  .q4 { background-color: #f8f0ff; } /* Pastel Violet/Lavender */
+  /* Replaced block backgrounds with your matching pastel borders */
+  .q1 { border: 2px solid #fff0f5; } /* Pastel Pink Border */
+  .q2 { border: 2px solid #fffbf0; } /* Soft Yellow Border */
+  .q3 { border: 2px solid #f0f7ff; } /* Light Blue Border */
+  .q4 { border: 2px solid #f8f0ff; } /* Pastel Violet Border */
 
   .q-label {
-    font-size: 14px;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size: 16px; /* Bigger label font size */
+    margin-bottom: 10px;
+    display: block;
     font-weight: 400;
+    font-style: italic;
   }
 
   .q1 .q-label { color: #b8508f; }
@@ -131,48 +107,41 @@
   .q3 .q-label { color: #3870b8; }
   .q4 .q-label { color: #7848b8; }
 
-  /* Soft seamless Input Fields */
+  /* Clean Input Areas */
   textarea {
     width: 100%;
     border: none;
-    background: rgba(255, 255, 255, 0.65);
-    border-radius: 8px;
-    padding: 10px 12px;
+    background: transparent;
     font-family: 'Lora', serif;
-    font-size: 13.5px;
+    font-size: 15px; /* Bigger font size */
     color: #4a4a4a;
     resize: none;
     outline: none;
-    line-height: 1.5;
-    min-height: 44px;
-    transition: background 0.2s, box-shadow 0.2s;
+    line-height: 1.6;
+    min-height: 50px;
   }
 
-  textarea::placeholder { color: #bbb; font-style: italic; }
-  textarea:focus { 
-    background: #ffffff; 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
+  textarea::placeholder { color: #ccc; font-style: italic; }
 
-  /* Save button styled cleanly */
+  /* New solid chic button replacing the gradient */
   .save-btn {
     width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, #fbc6db 0%, #d8bdf8 100%);
-    border: none;
-    border-radius: 25px;
-    color: white;
+    padding: 14px;
+    background-color: #f8f0ff; /* Solid minimalist tone matching violet accents */
+    border: 1px solid #e3d2f5;
+    border-radius: 30px;
+    color: #7848b8;
     font-family: 'Lora', serif;
-    font-size: 14px;
+    font-size: 15px; /* Bigger font size */
+    font-style: italic;
     cursor: pointer;
-    margin-top: 18px;
-    letter-spacing: 0.02em;
-    transition: transform 0.2s, opacity 0.2s;
-    box-shadow: 0 3px 10px rgba(216, 189, 248, 0.4);
+    margin-top: 24px;
+    letter-spacing: 0.05em;
+    transition: background-color 0.2s, transform 0.1s;
   }
 
   .save-btn:hover { 
-    opacity: 0.95; 
+    background-color: #f3e5ff;
     transform: translateY(-1px); 
   }
   
@@ -182,68 +151,64 @@
 
   .saved-msg {
     text-align: center;
-    font-size: 12px;
+    font-size: 13px;
     color: #92c484;
     font-style: italic;
-    margin-top: 8px;
-    min-height: 16px;
+    margin-top: 10px;
+    min-height: 18px;
   }
 
-  /* Animated magical footer text */
+  /* Animated Breathing Footer Text */
   .footer {
     text-align: center;
-    font-size: 11px;
+    font-size: 13px; /* Bigger font size */
     color: #cca4ca;
     font-style: italic;
-    margin-top: 14px;
+    margin-top: 18px;
     animation: breathe 3s ease-in-out infinite;
   }
 
   /* --- Keyframe Animations --- */
   @keyframes float {
     0% { transform: translateY(0px); }
-    50% { transform: translateY(-4px); }
+    50% { transform: translateY(-3px); }
     100% { transform: translateY(0px); }
   }
 
-  @keyframes twinkle {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
-    50% { transform: scale(1.2) rotate(15deg); opacity: 1; }
-  }
-
   @keyframes breathe {
-    0%, 100% { opacity: 0.7; transform: scale(0.98); }
+    0%, 100% { opacity: 0.65; transform: scale(0.99); }
     50% { opacity: 1; transform: scale(1); }
   }
 </style>
 </head>
 <body>
 <div class="card">
-  <div class="sparkles"><span>✦</span> <span>✧</span> <span>✦</span></div>
-  <div class="title">daily check-in</div>
-  <div class="subtitle">magic blooming one task at a time</div>
-
-  <div class="date-nav">
-    <button class="date-btn" onclick="changeDate(-1)">←</button>
-    <div class="date-display" id="dateDisplay"></div>
-    <button class="date-btn" onclick="changeDate(1)">→</button>
+  
+  <!-- Left/Right Split Header Area -->
+  <div class="header-container">
+    <div class="subtitle">magic blooming one task at a time</div>
+    <div class="date-nav">
+      <button class="date-btn" onclick="changeDate(-1)">←</button>
+      <div class="date-display" id="dateDisplay"></div>
+      <button class="date-btn" onclick="changeDate(1)">→</button>
+    </div>
   </div>
 
   <div class="questions">
     <div class="q-block q1">
-      <span class="q-label">🌸 today is:</span>
+      <span class="q-label">today is:</span>
       <textarea id="q1" rows="2" placeholder="name this day something beautiful..."></textarea>
     </div>
     <div class="q-block q2">
-      <span class="q-label">☁️ how am i feeling right now?</span>
+      <span class="q-label">how am i feeling right now?</span>
       <textarea id="q2" rows="2" placeholder="even one word is enough..."></textarea>
     </div>
     <div class="q-block q3">
-      <span class="q-label">🌿 one thing i am grateful for today:</span>
+      <span class="q-label">one thing i am grateful for today:</span>
       <textarea id="q3" rows="2" placeholder="big or small, it all counts..."></textarea>
     </div>
     <div class="q-block q4">
-      <span class="q-label">💫 my intention for today:</span>
+      <span class="q-label">my intention for today:</span>
       <textarea id="q4" rows="2" placeholder="what kind of magic will you make today?"></textarea>
     </div>
   </div>
@@ -260,6 +225,7 @@
     return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
   }
 
+  // Key system tied to LocalStorage
   function getKey(d) { return 'morning_' + d.toISOString().split('T')[0]; }
 
   function changeDate(dir) {
@@ -280,7 +246,7 @@
       q4: document.getElementById('q4').value,
     }));
     const msg = document.getElementById('savedMsg');
-    msg.textContent = 'saved! your bloom is safe 🌟';
+    msg.textContent = 'saved securely!';
     setTimeout(() => msg.textContent = '', 2500);
   }
 
