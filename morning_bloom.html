@@ -9,40 +9,43 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
-    font-family: serif !important; /* Forces standard system serif font strictly */
+    font-family: serif !important; /* Strict system serif */
+    font-style: normal !important; /* Forces all text to be non-italicized */
   }
 
   html, body {
     overflow-x: hidden;
     background: transparent;
     width: 100%;
+    position: relative;
   }
 
-  /* Maximized container styling (sagad to edges) */
+  /* Full edge-to-edge container layout */
   .card {
     background: transparent;
     padding: 10px 0px;
     width: 100%;
     margin: 0 auto;
+    position: relative;
   }
 
-  /* Header Split Column */
+  /* Header Layout */
   .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     margin-bottom: 20px;
+    gap: 12px;
   }
 
   .subtitle {
     font-size: 18px;
     color: #c060a1;
-    font-style: italic;
     text-transform: lowercase;
   }
 
-  /* Original Rounded Shape for Date Nav Preserved */
+  /* Rounded Shape for Date Nav */
   .date-nav {
     display: flex;
     align-items: center;
@@ -71,12 +74,11 @@
   .date-display {
     font-size: 16px;
     color: #9b6bbd;
-    font-style: italic;
     min-width: 190px;
     text-align: center;
   }
 
-  /* Questions container stretched 100% wide */
+  /* Stretched Questions (Sagad) */
   .questions { 
     display: flex; 
     flex-direction: column; 
@@ -84,21 +86,21 @@
     width: 100%;
   }
 
+  /* YOUR EXACT ORIGINAL BLOCK COLORS - NO BORDERS */
   .q-block { 
     width: 100%;
     border-radius: 14px; 
     padding: 14px 18px; 
+    border: none !important; 
   }
 
-  /* EXACT ORIGINAL BLOCK COLORS & BORDERS PRESERVED UNTOUCHED */
-  .q1 { background: #fff0f8; border: 1px solid #f9c8e0; }
-  .q2 { background: #fffbf0; border: 1px solid #f5e4a0; }
-  .q3 { background: #f0f6ff; border: 1px solid #b8d8f8; }
-  .q4 { background: #f8f0ff; border: 1px solid #d8b8f8; }
+  .q1 { background: #fff0f8; }
+  .q2 { background: #fffbf0; }
+  .q3 { background: #f0f6ff; }
+  .q4 { background: #f8f0ff; }
 
   .q-label {
     font-size: 18px; 
-    font-style: italic;
     margin-bottom: 8px;
     display: block;
     font-weight: 600;
@@ -109,7 +111,7 @@
   .q3 .q-label { color: #4070c0; }
   .q4 .q-label { color: #7040c0; }
 
-  /* Input fields featuring clean fade-in switching transition styles */
+  /* Input fields featuring clean dynamic transition styling on load */
   textarea {
     width: 100%;
     border: none;
@@ -124,67 +126,99 @@
     min-height: 48px;
     overflow: hidden;
     opacity: 1;
-    transform: translateY(0px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
   }
 
-  /* Target animation classes triggering on change action triggers */
   textarea.switching {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(2px);
   }
 
-  textarea.saved-flash {
-    animation: flashSuccess 0.4s ease-out;
-  }
-
-  textarea::placeholder { color: #ccc; font-style: italic; }
+  textarea::placeholder { color: #ccc; }
   textarea:focus { background: white; }
 
-  /* Premium Solid Minimal Button */
+  /* New Extra Cute Rounded Button Profile */
   .save-btn {
     width: 100%;
     padding: 14px;
-    background-color: #f8f0ff; 
-    border: 1px solid #e3d2f5;
-    border-radius: 40px;
-    color: #7848b8;
-    font-size: 16px; 
-    font-style: italic;
+    background-color: #ffffeb; /* Soft buttery yellow accent */
+    border: 2px dashed #f5e4a0; /* Cute dashed craft border */
+    border-radius: 50px;
+    color: #a07820;
+    font-size: 17px; 
+    font-weight: 600;
     cursor: pointer;
     margin-top: 20px;
-    letter-spacing: 0.04em;
-    transition: background-color 0.2s, transform 0.1s;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 0px #f5e4a0; /* Pop art 2D button shadow style */
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   .save-btn:hover { 
-    background-color: #f3e5ff;
-    transform: translateY(-1px); 
+    background-color: #fffde0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px #f5e4a0;
   }
 
-  /* Space Minimizer Elements applied downward */
-  .saved-msg {
-    text-align: center;
-    font-size: 14px;
-    color: #92c484;
-    font-style: italic;
-    margin-top: 4px;
-    min-height: 16px;
+  .save-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0px #f5e4a0;
   }
 
+  /* Centered Magical Save Overlay Alert */
+  .magic-save-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    background: rgba(255, 255, 255, 0.98);
+    border: 2px dashed #d8b8f8;
+    box-shadow: 0 10px 30px rgba(120, 72, 184, 0.15);
+    padding: 18px 36px;
+    border-radius: 40px;
+    color: #7040c0;
+    font-size: 20px;
+    font-weight: 600;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .magic-save-overlay.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: 0.05em;
+  }
+
+  /* Footer Area */
   .footer {
     text-align: center;
     font-size: 14px; 
     color: #cca4ca;
-    font-style: italic;
-    margin-top: 4px; /* Lessened space drastically */
+    margin-top: 22px; 
   }
 
-  /* Transition Animations */
-  @keyframes flashSuccess {
-    0% { background: rgba(255, 255, 255, 0.7); }
-    50% { background: rgba(255, 255, 255, 1); transform: scale(1.005); }
-    100% { background: rgba(255, 255, 255, 0.7); }
+  /* Responsive Design Overrides for Mobile Phones */
+  @media (max-width: 600px) {
+    .header-container {
+      flex-direction: column !important; /* Forces vertical stacking */
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+      gap: 14px;
+    }
+    
+    .subtitle {
+      order: 1 !important; /* Forces magic blooming text on top */
+      font-size: 18px !important;
+    }
+    
+    .date-nav {
+      order: 2 !important; /* Places date nav directly underneath */
+      width: 100%;
+      max-width: 320px;
+    }
   }
 </style>
 </head>
@@ -220,9 +254,11 @@
   </div>
 
   <button class="save-btn" onclick="saveEntry()">save this day</button>
-  <div class="saved-msg" id="savedMsg"></div>
   <div class="footer">rest now, little dreamer. you did enough today</div>
 </div>
+
+<!-- Centered Pop Alert Overlay Container -->
+<div class="magic-save-overlay" id="magicSave">saved securely!</div>
 
 <script>
   let currentDate = new Date();
@@ -235,18 +271,14 @@
 
   function changeDate(dir) {
     const textareas = document.querySelectorAll('textarea');
-    
-    // Smooth fade outward
     textareas.forEach(ta => ta.classList.add('switching'));
     
     setTimeout(() => {
       currentDate.setDate(currentDate.getDate() + dir);
       document.getElementById('dateDisplay').textContent = formatDate(currentDate);
       load();
-      
-      // Smooth fade back inward
       textareas.forEach(ta => ta.classList.remove('switching'));
-    }, 200);
+    }, 150);
   }
 
   function updateDisplay() {
@@ -262,16 +294,10 @@
       q4: document.getElementById('q4').value,
     }));
 
-    // Trigger soft flash interaction animation
-    const textareas = document.querySelectorAll('textarea');
-    textareas.forEach(ta => {
-      ta.classList.add('saved-flash');
-      setTimeout(() => ta.classList.remove('saved-flash'), 400);
-    });
-
-    const msg = document.getElementById('savedMsg');
-    msg.textContent = 'saved securely!';
-    setTimeout(() => msg.textContent = '', 2000);
+    // Trigger magical centered overlay pop animation
+    const overlay = document.getElementById('magicSave');
+    overlay.classList.add('show');
+    setTimeout(() => overlay.classList.remove('show'), 1800);
   }
 
   function load() {
@@ -280,7 +306,7 @@
     ['q1','q2','q3','q4'].forEach(id => document.getElementById(id).value = e[id] || '');
   }
 
-  // Auto-initializes instantly to current dynamic live system time
+  // Auto-initializes to current live device date time on application initialization
   updateDisplay();
 </script>
 </body>
