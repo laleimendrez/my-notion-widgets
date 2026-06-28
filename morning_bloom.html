@@ -9,8 +9,8 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
-    font-family: serif !important; /* Strict system serif */
-    font-style: normal !important; /* Forces all text to be non-italicized */
+    font-family: serif !important; 
+    font-style: normal !important; 
   }
 
   html, body {
@@ -20,7 +20,6 @@
     position: relative;
   }
 
-  /* Full edge-to-edge container layout */
   .card {
     background: transparent;
     padding: 10px 0px;
@@ -29,7 +28,7 @@
     position: relative;
   }
 
-  /* Header Layout */
+  /* Header Columns */
   .header-container {
     display: flex;
     justify-content: space-between;
@@ -68,7 +67,7 @@
   }
 
   .date-btn:hover { 
-    transform: scale(1.3); 
+    transform: scale(1.2); 
   }
 
   .date-display {
@@ -78,7 +77,6 @@
     text-align: center;
   }
 
-  /* Stretched Questions (Sagad) */
   .questions { 
     display: flex; 
     flex-direction: column; 
@@ -86,123 +84,122 @@
     width: 100%;
   }
 
-  /* YOUR EXACT ORIGINAL BLOCK COLORS - NO BORDERS */
+  /* Box background blocks */
   .q-block { 
     width: 100%;
     border-radius: 14px; 
-    padding: 14px 18px; 
+    padding: 12px 16px; 
     border: none !important; 
   }
 
-  .q1 { background: #fff0f8; }
-  .q2 { background: #fffbf0; }
-  .q3 { background: #f0f6ff; }
-  .q4 { background: #f8f0ff; }
+  .q1 { background: #fff0f8; } /* Pink Box */
+  .q2 { background: #fffbf0; } /* Yellow Box */
+  .q3 { background: #f0f6ff; } /* Blue Box */
+  .q4 { background: #f8f0ff; } /* Purple Box */
 
   .q-label {
-    font-size: 18px; 
-    margin-bottom: 8px;
+    font-size: 17px; 
+    margin-bottom: 6px;
     display: block;
-    font-weight: 600;
+    font-weight: 400;
   }
 
-  .q1 .q-label { color: #c060a0; }
-  .q2 .q-label { color: #a07820; }
-  .q3 .q-label { color: #4070c0; }
-  .q4 .q-label { color: #7040c0; }
+  /* Your new rotated label text color assignments */
+  .q1 .q-label { color: #7040c0; } /* Pink box label -> Purple text */
+  .q2 .q-label { color: #c060a0; } /* Yellow box label -> Pink text */
+  .q3 .q-label { color: #a07820; } /* Blue box label -> Yellow/Brown text */
+  .q4 .q-label { color: #4070c0; } /* Purple box label -> Blue text */
 
-  /* Input fields featuring clean dynamic transition styling on load */
+  /* Compact input fields that auto-expand dynamically */
   textarea {
     width: 100%;
     border: none;
-    background: rgba(255,255,255,0.7);
-    border-radius: 8px;
-    padding: 8px 11px;
+    background: rgba(255,255,255,0.65);
+    border-radius: 6px;
+    padding: 6px 10px;
     font-size: 16px; 
-    color: #4a4a4a;
     resize: none;
     outline: none;
-    line-height: 1.6;
-    min-height: 48px;
-    overflow: hidden;
+    line-height: 1.5;
+    min-height: 36px; 
+    height: 36px;
+    overflow-y: hidden;
     opacity: 1;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
   }
 
+  /* Matching your typing color configurations exactly to the labels */
+  #q1 { color: #7040c0; }
+  #q2 { color: #c060a0; }
+  #q3 { color: #a07820; }
+  #q4 { color: #4070c0; }
+
   textarea.switching {
-    opacity: 0;
-    transform: translateY(2px);
+    opacity: 0.3;
   }
 
   textarea::placeholder { color: #ccc; }
   textarea:focus { background: white; }
 
-  /* New Extra Cute Rounded Button Profile */
+  /* Minimal Clean Button */
   .save-btn {
     width: 100%;
-    padding: 14px;
-    background-color: #ffffeb; /* Soft buttery yellow accent */
-    border: 2px dashed #f5e4a0; /* Cute dashed craft border */
-    border-radius: 50px;
-    color: #a07820;
-    font-size: 17px; 
-    font-weight: 600;
+    padding: 12px;
+    background-color: #fcf0ff; 
+    border: 1px solid #ebd6ff; 
+    border-radius: 40px;
+    color: #7848b8;
+    font-size: 16px; 
+    font-weight: 500;
     cursor: pointer;
     margin-top: 20px;
-    letter-spacing: 0.05em;
-    box-shadow: 0 4px 0px #f5e4a0; /* Pop art 2D button shadow style */
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    letter-spacing: 0.03em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
   }
 
   .save-btn:hover { 
-    background-color: #fffde0;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0px #f5e4a0;
+    background-color: #f5e0ff;
   }
 
   .save-btn:active {
-    transform: translateY(4px);
-    box-shadow: 0 0px 0px #f5e4a0;
+    transform: scale(0.99);
   }
 
-  /* Centered Magical Save Overlay Alert */
+  /* Centered Alert Overlay Notification System */
   .magic-save-overlay {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.7);
-    background: rgba(255, 255, 255, 0.98);
-    border: 2px dashed #d8b8f8;
-    box-shadow: 0 10px 30px rgba(120, 72, 184, 0.15);
-    padding: 18px 36px;
-    border-radius: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #f0e0ff;
+    box-shadow: 0 6px 20px rgba(120, 72, 184, 0.08);
+    padding: 14px 28px;
+    border-radius: 30px;
     color: #7040c0;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: 500;
     z-index: 999;
     pointer-events: none;
     opacity: 0;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: opacity 0.3s ease;
   }
 
   .magic-save-overlay.show {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    letter-spacing: 0.05em;
   }
 
-  /* Footer Area */
   .footer {
     text-align: center;
     font-size: 14px; 
     color: #cca4ca;
-    margin-top: 22px; 
+    margin-top: 18px; 
   }
 
-  /* Responsive Design Overrides for Mobile Phones */
+  /* Mobile Layout Rules */
   @media (max-width: 600px) {
     .header-container {
-      flex-direction: column !important; /* Forces vertical stacking */
+      flex-direction: column !important;
       justify-content: center !important;
       align-items: center !important;
       text-align: center !important;
@@ -210,12 +207,12 @@
     }
     
     .subtitle {
-      order: 1 !important; /* Forces magic blooming text on top */
+      order: 1 !important;
       font-size: 18px !important;
     }
     
     .date-nav {
-      order: 2 !important; /* Places date nav directly underneath */
+      order: 2 !important;
       width: 100%;
       max-width: 320px;
     }
@@ -237,19 +234,19 @@
   <div class="questions">
     <div class="q-block q1">
       <span class="q-label">today is:</span>
-      <textarea id="q1" rows="2" placeholder="name this day something beautiful..."></textarea>
+      <textarea id="q1" rows="1" placeholder="name this day something beautiful..." oninput="autoGrow(this)"></textarea>
     </div>
     <div class="q-block q2">
       <span class="q-label">how am i feeling right now?</span>
-      <textarea id="q2" rows="2" placeholder="even one word is enough..."></textarea>
+      <textarea id="q2" rows="1" placeholder="even one word is enough..." oninput="autoGrow(this)"></textarea>
     </div>
     <div class="q-block q3">
       <span class="q-label">one thing i am grateful for today:</span>
-      <textarea id="q3" rows="2" placeholder="big or small, it all counts..."></textarea>
+      <textarea id="q3" rows="1" placeholder="big or small, it all counts..." oninput="autoGrow(this)"></textarea>
     </div>
     <div class="q-block q4">
       <span class="q-label">my intention for today:</span>
-      <textarea id="q4" rows="2" placeholder="what kind of magic will you make today?"></textarea>
+      <textarea id="q4" rows="1" placeholder="what kind of magic will you make today?" oninput="autoGrow(this)"></textarea>
     </div>
   </div>
 
@@ -257,8 +254,7 @@
   <div class="footer">rest now, little dreamer. you did enough today</div>
 </div>
 
-<!-- Centered Pop Alert Overlay Container -->
-<div class="magic-save-overlay" id="magicSave">saved securely!</div>
+<div class="magic-save-overlay" id="magicSave">saved securely</div>
 
 <script>
   let currentDate = new Date();
@@ -269,6 +265,11 @@
 
   function getKey(d) { return 'morning_' + d.toISOString().split('T')[0]; }
 
+  function autoGrow(element) {
+    element.style.height = "36px";
+    element.style.height = (element.scrollHeight) + "px";
+  }
+
   function changeDate(dir) {
     const textareas = document.querySelectorAll('textarea');
     textareas.forEach(ta => ta.classList.add('switching'));
@@ -277,7 +278,10 @@
       currentDate.setDate(currentDate.getDate() + dir);
       document.getElementById('dateDisplay').textContent = formatDate(currentDate);
       load();
-      textareas.forEach(ta => ta.classList.remove('switching'));
+      textareas.forEach(ta => {
+        ta.classList.remove('switching');
+        autoGrow(ta); 
+      });
     }, 150);
   }
 
@@ -294,19 +298,21 @@
       q4: document.getElementById('q4').value,
     }));
 
-    // Trigger magical centered overlay pop animation
     const overlay = document.getElementById('magicSave');
     overlay.classList.add('show');
-    setTimeout(() => overlay.classList.remove('show'), 1800);
+    setTimeout(() => overlay.classList.remove('show'), 1500);
   }
 
   function load() {
     const saved = localStorage.getItem(getKey(currentDate));
     const e = saved ? JSON.parse(saved) : {};
-    ['q1','q2','q3','q4'].forEach(id => document.getElementById(id).value = e[id] || '');
+    ['q1','q2','q3','q4'].forEach(id => {
+      const ta = document.getElementById(id);
+      ta.value = e[id] || '';
+      autoGrow(ta);
+    });
   }
 
-  // Auto-initializes to current live device date time on application initialization
   updateDisplay();
 </script>
 </body>
